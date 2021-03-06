@@ -11,7 +11,7 @@ const Container = styled.div`
   margin-top: 2rem;
   text-align: center;
 
-  @media screen and ${theme.breakpoints.desktop} {
+  @media ${theme.breakpoints.desktop} {
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-flow: dense;
     margin-top: 3rem;
@@ -25,7 +25,7 @@ const AnnouncementImage = styled.img`
   border-radius: 4px;
   border: 2px solid var(--color-secondary);
 
-  @media screen and ${theme.breakpoints.desktop} {
+  @media ${theme.breakpoints.desktop} {
     grid-column: ${props => !props.odd ? "1 / 2" : "3 / 4"};
     width: auto;
     max-height: 180px;
@@ -45,7 +45,7 @@ const AnnouncementInfo = styled.div`
     }
   }
 
-  @media screen and ${theme.breakpoints.desktop} {
+  @media ${theme.breakpoints.desktop} {
     grid-column: ${props => !props.odd ? "2 / 4" : "1 / 3"};
     text-align: ${props => !props.odd ? "start" : "end" };
     margin-top: 0;
