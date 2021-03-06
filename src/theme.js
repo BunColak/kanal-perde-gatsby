@@ -36,7 +36,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   h1,h2,h3,h4,h5,h6 {
-    font-family: var(--color-secondary);
+    font-family: var(--font-secondary);
     font-weight: 700;
     margin: 0;
   }
