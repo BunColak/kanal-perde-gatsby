@@ -7,8 +7,10 @@ import SEO from "../components/seo"
 import styled from "styled-components"
 import formatBlock from "../utils/formatBlock"
 import { theme } from "../theme"
+import Announcement from "../components/Announcement"
+import FancyLink from "../components/FancyLink"
 
-const AboutSection = styled.div`
+const AboutSection = styled.section`
   margin-top: 4rem;
   display: grid;
   grid-gap: 1rem;
@@ -22,24 +24,38 @@ const AboutSection = styled.div`
   h2 {
     margin-bottom: 1.25rem;
   }
-  
+
   & > * {
     text-align: center;
   }
-  
-  @media ${theme.breakpoints.desktop} {
+
+  @media screen and ${theme.breakpoints.desktop} {
     grid-template-columns: 1fr 2fr;
-    
+
     img {
       margin: 0;
       max-height: none;
       width: 100%;
     }
-    
+
     & > * {
       text-align: start;
     }
   }
+`
+
+const AnnouncementSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+
+  h2 {
+    text-align: center;
+  }
+`
+
+const AnnouncementLink = styled(FancyLink)`
+  margin: 1.5rem auto 0;
 `
 
 const IndexPage = ({ data }) => {
@@ -47,6 +63,13 @@ const IndexPage = ({ data }) => {
 
   return <Layout>
     <SEO title="Ana Sayfa" />
+    <AnnouncementSection>
+      <h2>Duyurular</h2>
+      {data.allSanityAnnouncement.edges.map(({node}, index) => (
+        <Announcement key={node.id} announcement={node} odd={index % 2 === 1} />
+      ))}
+      <AnnouncementLink to="/duyurular">Bütün Duyurular</AnnouncementLink>
+    </AnnouncementSection>
     <AboutSection>
       <img src={data.sanityAbout.photo.asset.url} alt="Burkay" />
       <div>
@@ -76,6 +99,33 @@ export const query = graphql`
       asset {
         id
         url
+      }
+    }
+  }
+  allSanityAnnouncement(limit: 5, sort: {fields: date, order: DESC}) {
+    edges {
+      node {
+        id
+        title
+        date
+        slug
+        description {
+          _key
+          _type
+          style
+          list
+          children {
+            _key
+            _type
+            text
+            marks
+          }
+        }
+        photo {
+          asset {
+            url
+          }
+        }
       }
     }
   }

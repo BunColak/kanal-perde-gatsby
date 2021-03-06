@@ -15,7 +15,8 @@ export const theme = {
 }
 
 export const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&family=Karla&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@700&family=Karla&display=swap');
+  @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
   :root {
     --color-primary: ${theme.palette.primaryColor};
@@ -24,7 +25,7 @@ export const GlobalStyles = createGlobalStyle`
     --color-bg: ${theme.palette.backgroundColor};
     --color-text: ${theme.palette.textColor};
     --font-primary: 'Karla', sans-serif;
-    --font-secondary: 'Balsamiq Sans', cursive;
+    --font-secondary: 'PT Sans Caption', sans-serif;
   }
 
   body {
@@ -44,5 +45,15 @@ export const GlobalStyles = createGlobalStyle`
   p {
     margin: 0;
     line-height: 1.35rem;
+  }
+  
+  a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color-text);
+  }
+  
+  .material-icons {
+    vertical-align: middle;
   }
 `

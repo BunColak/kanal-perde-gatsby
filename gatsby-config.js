@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Kanal Perde`,
     description: `Ailenizin favori kanali`,
-    author: `Burkay Caglar`,
+  author: `Burkay Caglar`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
