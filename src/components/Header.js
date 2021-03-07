@@ -49,9 +49,6 @@ const Header = () => {
           <li>
             <Link to="/hikayeler">Sesli Hikayeler</Link>
           </li>
-          <li>
-            <Link to="/iletisim">İletisim</Link>
-          </li>
         </ul>
       </NavLinks>
     </Container>
