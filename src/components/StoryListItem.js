@@ -21,6 +21,8 @@ const Container = styled.div`
 
 const StoryImage = styled.div`
   width: 75%;
+  display: flex;
+  justify-content: center;
 
   img {
     width: 100%;
@@ -46,7 +48,7 @@ const StoryListItem = ({ story }) => {
           <StaticImage src="../images/placeholderStory.png" alt={story.title} />
         }
       </StoryImage>
-      <Link to={`/hikayeler/${story.slug}`}>
+      <Link to={`/hikayeler/${story.storyCategory.slug}/${story.slug}`}>
         <StoryTitle>{story.title}</StoryTitle>
       </Link>
       <SmallDate>{new Intl.DateTimeFormat("tr").format(new Date(story._createdAt))} - <Link
