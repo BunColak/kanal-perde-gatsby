@@ -33,6 +33,7 @@ query GetAnnouncementList($skip: Int!, $limit: Int!) {
         id
         title
         date
+        slug
         photo {
           asset {
             url
