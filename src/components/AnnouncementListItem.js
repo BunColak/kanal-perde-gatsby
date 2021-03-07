@@ -14,7 +14,7 @@ const Container = styled.div`
   @media ${theme.breakpoints.desktop} {
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-flow: dense;
-    margin-top: 3rem;
+    margin-top: 6rem;
     grid-gap: 1rem;
   }
 `
@@ -54,7 +54,7 @@ const AnnouncementInfo = styled.div`
 
 
 
-const Announcement = ({ announcement, odd }) => {
+const AnnouncementListItem = ({ announcement, odd }) => {
   return (
     <Container>
       <AnnouncementImage src={announcement.photo.asset.url} alt={announcement.title} odd={odd} />
@@ -69,4 +69,4 @@ const Announcement = ({ announcement, odd }) => {
   )
 }
 
-export default Announcement
+export default AnnouncementListItem

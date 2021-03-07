@@ -34,15 +34,29 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
   `)
 
+  const announcementPerPage = 5;
+  const numberOfAnnouncementPages = Math.ceil(results.data.allSanityAnnouncement.edges.length / announcementPerPage)
+  Array.from({length: numberOfAnnouncementPages}).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? '/duyurular' : `/duyurular/${i+1}`,
+      component: path.resolve('./src/layouts/AnnouncementListLayout.js'),
+      context: {
+        limit: announcementPerPage,
+        skip: i * announcementPerPage,
+        pageCount: numberOfAnnouncementPages,
+        currentPage: i + 1
+      }
+    })
+  })
+
   results.data.allSanityAnnouncement.edges.forEach(({ node }) => {
     createPage({
       path: `/duyurular/${node.slug}`,
-      component: path.resolve(`./src/components/AnnouncementLayout.js`),
+      component: path.resolve(`./src/layouts/AnnouncementLayout.js`),
       context: {
         id: node.id,
       }
     })
   })
 
-  console.log(results)
 }

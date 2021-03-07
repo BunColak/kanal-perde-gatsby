@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import styled from "styled-components"
 import BlockContent from "@sanity/block-content-to-react"
 import formatBlock from "../utils/formatBlock"
-import SmallDate from "./SmallDate"
+import SmallDate from "../components/SmallDate"
 
 const Container = styled.div`
   display: flex;

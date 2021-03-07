@@ -2,12 +2,12 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import BlockContent from "@sanity/block-content-to-react"
 
-import Layout from "../components/Layout"
+import Layout from "../layouts/Layout"
 import SEO from "../components/seo"
 import styled from "styled-components"
 import formatBlock from "../utils/formatBlock"
 import { theme } from "../theme"
-import Announcement from "../components/Announcement"
+import AnnouncementListItem from "../components/AnnouncementListItem"
 import FancyLink from "../components/FancyLink"
 
 const AboutSection = styled.section`
@@ -55,7 +55,7 @@ const AnnouncementSection = styled.section`
 `
 
 const AnnouncementLink = styled(FancyLink)`
-  margin: 1.5rem auto 0;
+  margin: 4rem auto 0;
 `
 
 const IndexPage = ({ data }) => {
@@ -66,7 +66,7 @@ const IndexPage = ({ data }) => {
     <AnnouncementSection>
       <h2>Duyurular</h2>
       {data.allSanityAnnouncement.edges.map(({node}, index) => (
-        <Announcement key={node.id} announcement={node} odd={index % 2 === 1} />
+        <AnnouncementListItem key={node.id} announcement={node} odd={index % 2 === 1} />
       ))}
       <AnnouncementLink to="/duyurular">Bütün Duyurular</AnnouncementLink>
     </AnnouncementSection>
