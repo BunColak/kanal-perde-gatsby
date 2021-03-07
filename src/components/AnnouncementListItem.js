@@ -1,10 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import BlockContent from "@sanity/block-content-to-react"
-import formatBlock from "../utils/formatBlock"
 import { Link } from "gatsby"
 import { theme } from "../theme"
 import SmallDate from "./SmallDate"
+import BlockText from "./BlockText"
 
 const Container = styled.div`
   display: grid;
@@ -63,7 +62,7 @@ const AnnouncementListItem = ({ announcement, odd }) => {
           <h3>{announcement.title}</h3>
         </Link>
         <SmallDate>{new Intl.DateTimeFormat("tr").format(new Date(announcement.date))}</SmallDate>
-        <BlockContent blocks={formatBlock(announcement.description)} />
+        <BlockText block={announcement.description} />
       </AnnouncementInfo>
     </Container>
   )

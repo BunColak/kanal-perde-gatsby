@@ -8,6 +8,10 @@ const Container = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
+  img {
+    border: none !important;
+  }
 `
 
 const NavLinks = styled.div`

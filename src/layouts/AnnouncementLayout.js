@@ -2,9 +2,8 @@ import React from "react"
 import Layout from "./Layout"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import BlockContent from "@sanity/block-content-to-react"
-import formatBlock from "../utils/formatBlock"
 import SmallDate from "../components/SmallDate"
+import BlockText from "../components/BlockText"
 
 const Container = styled.div`
   display: flex;
@@ -32,7 +31,7 @@ const AnnouncementLayout = ({ data: { sanityAnnouncement: announcement } }) => {
         <img src={announcement.photo.asset.url} alt={announcement.title} />
         <h2>{announcement.title}</h2>
         <SmallDate>{new Intl.DateTimeFormat("tr").format(new Date(announcement.date))}</SmallDate>
-        <BlockContent blocks={formatBlock(announcement.description)} />
+        <BlockText block={announcement.description} />
       </Container>
     </Layout>
   )

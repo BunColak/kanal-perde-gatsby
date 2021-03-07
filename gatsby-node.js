@@ -3,14 +3,29 @@ const slugify = require("slugify")
 
 exports.createResolvers = ({createResolvers}) => {
   createResolvers({
-    // `SanityBlogPost` being the type name you want to extend
     SanityAnnouncement: {
-      // `happiness` being the field name you want to add
       slug: {
-        // type is the _GraphQL_ type name, so you can do `String!` for "non-null string", `Int` for integer, `SanityCategory` for a document or object of type  `SanityCategory`.
         type: 'String',
         resolve(source, args, context, info) {
-          return slugify(source.title.replace(/^\W/g) + Math.ceil(new Date(source.date).getDate()))
+          return slugify(source.title.toLowerCase().replace(/^\W/g,'') + Math.ceil(new Date(source.date).getDate()))
+        }
+      }
+    },
+    SanityStory: {
+      slug: {
+        type: 'String',
+        resolve(source, args, context, info) {
+          const lowerTitle = source.title.toLowerCase()
+          return slugify(lowerTitle.replace(/^\W/g, '') + Math.ceil(new Date(source._createdAt).getDate()))
+        }
+      }
+    },
+    SanityStoryCategory: {
+      slug: {
+        type: 'String',
+        resolve(source, args, context, info) {
+          const lowerTitle = source.title.toLowerCase()
+          return slugify(lowerTitle.replace(/^\W/g, ''))
         }
       }
     }
@@ -23,6 +38,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const results = await graphql(`
   {
     allSanityAnnouncement {
+      edges {
+        node {
+          id
+          slug
+        }
+      }
+    }
+    allSanityStory {
+      edges {
+        node {
+          id
+          slug
+        }
+      }
+    }
+    allSanityStoryCategory {
       edges {
         node {
           id
@@ -53,6 +84,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     createPage({
       path: `/duyurular/${node.slug}`,
       component: path.resolve(`./src/layouts/AnnouncementLayout.js`),
+      context: {
+        id: node.id,
+      }
+    })
+  })
+
+  results.data.allSanityStoryCategory.edges.forEach(({ node }) => {
+    createPage({
+      path: `/hikayeler/${node.slug}`,
+      component: path.resolve(`./src/layouts/StoryCategoryLayout.js`),
       context: {
         id: node.id,
       }

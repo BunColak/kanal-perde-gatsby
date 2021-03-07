@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "./Layout"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import AnnouncementListItem from "../components/AnnouncementListItem"
 import styled from "styled-components"
 import Pagination from "../components/Pagination"

@@ -27,6 +27,10 @@ export const GlobalStyles = createGlobalStyle`
     --font-primary: 'Karla', sans-serif;
     --font-secondary: 'PT Sans Caption', sans-serif;
   }
+  
+  * {
+    box-sizing: border-box;
+  }
 
   body {
     font-family: var(--font-primary);
@@ -51,6 +55,10 @@ export const GlobalStyles = createGlobalStyle`
     display: inline-block;
     text-decoration: none;
     color: var(--color-text);
+  }
+  
+  img {
+      border: 2px solid var(--color-secondary);
   }
   
   .material-icons {
