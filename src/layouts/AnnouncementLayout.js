@@ -5,6 +5,7 @@ import styled from "styled-components"
 import SmallDate from "../components/SmallDate"
 import BlockText from "../components/BlockText"
 import IframeResizer from "iframe-resizer-react"
+import qs from "query-string"
 
 const Container = styled.div`
   display: flex;
@@ -29,7 +30,18 @@ const YoutubeContainer = styled(IframeResizer)`
   margin-top: 1rem;
 `
 
+
 const AnnouncementLayout = ({ data: { sanityAnnouncement: announcement } }) => {
+
+  const getYoutubeId = () => {
+    if (announcement.link) {
+      const link = qs.parseUrl(announcement.link)
+      return link.query.v
+    }
+
+    return ""
+  }
+
   return (
     <Layout>
       <Container>
@@ -40,7 +52,7 @@ const AnnouncementLayout = ({ data: { sanityAnnouncement: announcement } }) => {
         {announcement.link &&
         <YoutubeContainer
           log
-          src={`https://www.youtube.com/embed/${announcement.link}`}
+          src={`https://www.youtube.com/embed/${getYoutubeId()}`}
           style={{
             width: "1px",
             minWidth: "100%",
