@@ -21,6 +21,7 @@ const NavLinks = styled.div`
 
     li {
       margin-left: 0.75rem;
+      font-size: 0.875rem;
       
       a {
         text-decoration: none;
@@ -33,6 +34,7 @@ const NavLinks = styled.div`
     ul {
       li {
         margin-left: 1.5rem;
+        font-size: 1rem;
       }
     }
   }
@@ -48,6 +50,9 @@ const Header = () => {
         <ul>
           <li>
             <Link to="/hikayeler">Sesli Hikayeler</Link>
+          </li>
+          <li>
+            <Link to="/hakkimizda">Hakkimizda</Link>
           </li>
         </ul>
       </NavLinks>
