@@ -21,7 +21,7 @@ const About = ({ data: { sanityAbout: about } }) => {
     <Layout>
       <Container>
         <SectionTitle>{about.title}</SectionTitle>
-        <img src={about.photo.asset.url} />
+        <img src={about.photo.asset.url} alt={about.title}/>
         <BlockText block={about.description} />
       </Container>
     </Layout>
