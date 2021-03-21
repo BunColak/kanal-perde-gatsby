@@ -45,7 +45,7 @@ const AnnouncementLayout = ({ data: { sanityAnnouncement: announcement } }) => {
             width: "1px",
             minWidth: "100%",
             minHeight: "100%",
-            height: window.innerWidth > 1000 ? "450px" : "200px"
+            height: "450px"
           }}
         />}
       </Container>
